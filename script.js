@@ -1,4 +1,6 @@
 let game = JSON.parse(localStorage.getItem("gameScore"));
+let isPlaying = false;
+let interval;
 if (!game) {
   game = {
     win: 0,
@@ -107,8 +109,52 @@ function resetGame() {
   game.win = 0;
   game.loss = 0;
   game.tie = 0;
+  if (isPlaying) {
+    document.querySelector(".auto-play").innerText = "Auto Play";
+    clearInterval(interval);
+    isPlaying = false;
+  }
   localStorage.setItem("gameScore", JSON.stringify(game));
   document.querySelector(".result").innerHTML = "RESULT";
   document.querySelector(".result").setAttribute("style", "color: #7a7c89");
   updateScore(game);
+}
+
+function autoPlay() {
+  if (isPlaying) {
+    document.querySelector(".auto-play").innerText = "Auto Play";
+    clearInterval(interval);
+    isPlaying = false;
+  } else {
+    document.querySelector(".auto-play").innerText = "Stop";
+    isPlaying = true;
+    interval = setInterval(function () {
+      let randNum = Math.random();
+      if (randNum <= 1 / 3) {
+        document.querySelector(".rock-btn").classList.add("move-btn-active");
+        playGame("rock");
+        setTimeout(function () {
+          document
+            .querySelector(".rock-btn")
+            .classList.remove("move-btn-active");
+        }, 800);
+      } else if (randNum > 1 / 3 && randNum <= 2 / 3) {
+        document.querySelector(".paper-btn").classList.add("move-btn-active");
+        playGame("paper");
+        setTimeout(function () {
+          document
+            .querySelector(".paper-btn")
+            .classList.remove("move-btn-active");
+        }, 800);
+      } else if (randNum > 2 / 3) {
+        document.querySelector(".scissor-btn").classList.add("move-btn-active");
+        playGame("scissor");
+        setTimeout(function () {
+          document
+            .querySelector(".scissor-btn")
+            .classList.remove("move-btn-active");
+        }, 800);
+      }
+    }, 1000);
+  }
 }

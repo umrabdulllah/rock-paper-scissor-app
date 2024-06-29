@@ -40,7 +40,7 @@ body {
   justify-content: space-between;
 }
 
-.choice-container button {
+.choice-container .move-btn {
   font-size: 60px;
   padding: 60px;
   border-radius: 100%;
@@ -50,7 +50,12 @@ body {
   transition: 0.25s;
 }
 
-.choice-container button:hover {
+.choice-container .move-btn:hover {
+  font-size: 80px;
+  background-color: #000851;
+}
+
+.choice-container .move-btn-active {
   font-size: 80px;
   background-color: #000851;
 }
@@ -107,21 +112,42 @@ h3.result {
   color: #ff5d03;
 }
 
-.reset-btn {
+.btn-container {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-container button {
   background-color: #1cb5e0;
+  text-align: center;
   border: none;
   color: white;
   border-radius: 50px;
-  width: 50%;
-  font-size: 24px;
-  font-weight: 400;
-  padding: 10px;
+  width: 45%;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 15px;
   cursor: pointer;
   transition: 0.5s;
 }
 
-.reset-btn:hover {
+.btn-container .auto-play {
+  background-color: #040a2c;
+}
+
+.btn-container .reset-btn:hover {
   background-color: #0b81a1;
+}
+
+.btn-container .auto-play:hover {
+  background-color: #111e67;
+}
+
+.active-btn {
+  font-size: 80px;
+  background-color: #000851;
 }
 
 @media (max-width: 834px) {
