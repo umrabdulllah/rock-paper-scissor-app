@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #000851, #1cb5e0);
+  gap: 32px;
 }
 
 .container {
@@ -145,9 +146,17 @@ h3.result {
   background-color: #111e67;
 }
 
-.active-btn {
-  font-size: 80px;
-  background-color: #000851;
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.social-links i {
+  font-size: 32px;
+  color: #040a2c;
 }
 
 @media (max-width: 834px) {
