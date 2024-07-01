@@ -128,12 +128,12 @@ function autoPlay() {
   } else {
     document.querySelector(".auto-play").innerText = "Stop";
     isPlaying = true;
-    interval = setInterval(function () {
+    interval = setInterval(() => {
       let randNum = Math.random();
       if (randNum <= 1 / 3) {
         document.querySelector(".rock-btn").classList.add("move-btn-active");
         playGame("rock");
-        setTimeout(function () {
+        setTimeout(() => {
           document
             .querySelector(".rock-btn")
             .classList.remove("move-btn-active");
@@ -141,7 +141,7 @@ function autoPlay() {
       } else if (randNum > 1 / 3 && randNum <= 2 / 3) {
         document.querySelector(".paper-btn").classList.add("move-btn-active");
         playGame("paper");
-        setTimeout(function () {
+        setTimeout(() => {
           document
             .querySelector(".paper-btn")
             .classList.remove("move-btn-active");
@@ -149,7 +149,7 @@ function autoPlay() {
       } else if (randNum > 2 / 3) {
         document.querySelector(".scissor-btn").classList.add("move-btn-active");
         playGame("scissor");
-        setTimeout(function () {
+        setTimeout(() => {
           document
             .querySelector(".scissor-btn")
             .classList.remove("move-btn-active");
