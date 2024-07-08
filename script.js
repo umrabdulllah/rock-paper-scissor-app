@@ -8,6 +8,51 @@ if (!game) {
     tie: 0,
   };
 }
+const rockBtn = document.querySelector(".rock-btn");
+const paperBtn = document.querySelector(".paper-btn");
+const scissorBtn = document.querySelector(".scissor-btn");
+
+rockBtn.addEventListener("click", () => {
+  playGame("rock");
+});
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r" || event.key === "R") {
+    playGame("rock");
+    rockBtn.classList.add("move-btn-active");
+    setTimeout(() => {
+      rockBtn.classList.remove("move-btn-active");
+    }, 200);
+  }
+});
+
+paperBtn.addEventListener("click", () => {
+  playGame("paper");
+});
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "p" || event.key === "P") {
+    playGame("paper");
+    paperBtn.classList.add("move-btn-active");
+    setTimeout(() => {
+      paperBtn.classList.remove("move-btn-active");
+    }, 200);
+  }
+});
+
+scissorBtn.addEventListener("click", () => {
+  playGame("scissor");
+});
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "s" || event.key === "S") {
+    playGame("scissor");
+    scissorBtn.classList.add("move-btn-active");
+    setTimeout(() => {
+      scissorBtn.classList.remove("move-btn-active");
+    }, 200);
+  }
+});
 
 document.querySelector(".win").innerHTML = `Wins: ${game.win}`;
 document.querySelector(".loss").innerHTML = `Loss: ${game.loss}`;
@@ -105,6 +150,10 @@ function tieAction(myMove) {
   }
 }
 
+document.querySelector(".reset-btn").addEventListener("click", () => {
+  resetGame();
+});
+
 function resetGame() {
   game.win = 0;
   game.loss = 0;
@@ -120,6 +169,9 @@ function resetGame() {
   updateScore(game);
 }
 
+document.querySelector(".auto-play").addEventListener("click", () => {
+  autoPlay();
+});
 function autoPlay() {
   if (isPlaying) {
     document.querySelector(".auto-play").innerText = "Auto Play";
